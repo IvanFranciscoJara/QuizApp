@@ -44,7 +44,7 @@ module.exports = (env) => {
         ),
       }),
       new HtmlWebPackPlugin({
-        template: "./src/index.html",
+        template: "./src/Public/index.html",
         hash: true,
       }),
       new CopyPlugin({

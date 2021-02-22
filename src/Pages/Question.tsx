@@ -1,57 +1,26 @@
-import React from "react";
-import {
-  useParams,
-  // useLocation,
-  // Link,
-  useHistory,
-  // Route,
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { UpdateQuestion } from "../Redux/QuestionsDuck";
+import React from 'react'
+import { useParams, useHistory } from 'react-router-dom'
+import { RootState } from '../Redux/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { UpdateQuestion } from '../Redux/QuestionsDuck'
 // import queryString from 'query-string'
-import ResponsiveForm from "../Components/ResponsiveForm";
-import "./sass/Question.sass";
-import Button from "../Components/Button";
+import ResponsiveForm from '../Components/ResponsiveForm'
+import './sass/Question.sass'
+import Button from '../Components/Button'
 const Home = () => {
-  let RouteParams: any = useParams();
-  const CurrentQuestionNumber = parseInt(RouteParams.index);
-  const CurrentQuestionIndex = CurrentQuestionNumber - 1;
-  const dispatch = useDispatch();
-  const history = useHistory();
-  console.log(history);
-  const StoreQuestions = useSelector((state: any) => state.questionState);
-  console.log(StoreQuestions);
-  // console.log(CurrentQuestionParameter);
-
-  // let CurrentQuestionStore = StoreQuestions.findIndex((question) => {
-  //   return question.answer;
-  // });
-  // if (CurrentQuestionStore === -1) {
-  //   console.log("No comenzo", CurrentQuestionStore);
-  // } else {
-  //   console.log("Pregunta actual", CurrentQuestionStore + 1);
-  // }
-
-  // useEffect(() => {
-  //   console.log(StoreQuestions);
-  // }, [StoreQuestions]);
-
-  // console.log(StoreQuestions[CurrentQuestionParameter - 1]);
-  let CurrentQuestion = StoreQuestions[CurrentQuestionIndex];
-  console.log(
-    CurrentQuestionNumber,
-    CurrentQuestionNumber.toString(),
-    "/Question/" + (CurrentQuestionNumber + 1).toString()
-  );
-
-  const saveAnswer = (value) => {
-    dispatch(UpdateQuestion(CurrentQuestionIndex, value));
+  let RouteParams: { index: string } = useParams()
+  const CurrentQuestionNumber = parseInt(RouteParams.index)
+  const CurrentQuestionIndex = CurrentQuestionNumber - 1
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const StoreQuestions = useSelector((state: RootState) => state.questionState)
+  let CurrentQuestion = StoreQuestions[CurrentQuestionIndex]
+  const saveAnswer = (value: boolean) => {
+    dispatch(UpdateQuestion(CurrentQuestionIndex, value))
     history.push(
-      StoreQuestions.length === CurrentQuestionNumber
-        ? "/End"
-        : "/Question/" + (CurrentQuestionNumber + 1).toString()
-    );
-  };
+      StoreQuestions.length === CurrentQuestionNumber ? '/End' : '/Question/' + (CurrentQuestionNumber + 1).toString(),
+    )
+  }
 
   return (
     <ResponsiveForm>
@@ -71,6 +40,6 @@ const Home = () => {
         </div>
       </div>
     </ResponsiveForm>
-  );
-};
-export default Home;
+  )
+}
+export default Home

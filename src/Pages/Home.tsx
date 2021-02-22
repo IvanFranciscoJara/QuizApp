@@ -1,38 +1,30 @@
-import React from "react";
-import Button from "../Components/Button";
-import { IconQuizApp } from "../GlobalFiles/Icons";
-import useFetch from "../GlobalFiles/useFetch";
-import { useDispatch } from "react-redux";
-import { SaveQuestions } from "../Redux/QuestionsDuck";
-import { useHistory } from "react-router-dom";
-import "./sass/Home.sass";
+import React from 'react'
+import Button from '../Components/Button'
+import { IconQuizApp } from '../GlobalFiles/Icons'
+import useFetch from '../GlobalFiles/useFetch'
+import { useDispatch } from 'react-redux'
+import { SaveQuestions } from '../Redux/QuestionsDuck'
+import { useHistory } from 'react-router-dom'
+import ResponsiveForm from '../Components/ResponsiveForm'
+import './sass/Home.sass'
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const HandleSubmit = (e) => {
-    e.preventDefault();
-    console.log("hola");
-  };
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('hola')
+  }
 
-  // useEffect(()=>{},[])
-  const [response, responseGet] = useFetch(
-    "api.php?amount=10&difficulty=hard&type=boolean",
-    {},
-    "POST",
-    () => {
-      dispatch(SaveQuestions(response.data.results));
-      console.log("hola");
-      history.push({
-        pathname: "/Question/1",
-      });
-      // history.push("/Question/1");
-      // console.log("bais");
-    }
-  );
+  const [response, responseGet] = useFetch('api.php?amount=10&difficulty=hard&type=boolean', {}, 'POST', () => {
+    dispatch(SaveQuestions(response?.data?.results))
+    history.push({
+      pathname: '/Question/1',
+    })
+  })
   return (
-    <div className="ContainerHome">
-      <form onSubmit={HandleSubmit}>
+    <ResponsiveForm onSubmit={HandleSubmit}>
+      <div className="ContainerHome">
         <div className="Logo">
           <div className="Logo__image">
             <IconQuizApp />
@@ -45,14 +37,10 @@ const Home = () => {
           <p className="question">Can you score 100%?</p>
         </div>
         <div className="button">
-          <Button
-            text="Begin"
-            onClick={responseGet}
-            loading={response.loading}
-          />
+          <Button text="Begin" onClick={responseGet} loading={response.loading} />
         </div>
-      </form>
-    </div>
-  );
-};
-export default Home;
+      </div>
+    </ResponsiveForm>
+  )
+}
+export default Home

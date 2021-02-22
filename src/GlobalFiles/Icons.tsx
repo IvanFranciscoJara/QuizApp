@@ -1,12 +1,6 @@
-import React from "react";
+// import React from "react";
 const IconQuizApp = () => (
-  <svg
-    width="70"
-    height="72"
-    viewBox="0 0 70 72"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="70" height="72" viewBox="0 0 70 72" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M8.5324 32.2657C11.8027 32.2657 14.4538 29.6146 14.4538 26.3443C14.4538 23.0739 11.8027 20.4228 8.5324 20.4228C5.26208 20.4228 2.61096 23.0739 2.61096 26.3443C2.61096 29.6146 5.26208 32.2657 8.5324 32.2657Z"
       fill="#A2DDFD"
@@ -80,15 +74,9 @@ const IconQuizApp = () => (
       fill="black"
     />
   </svg>
-);
+)
 const IconBad = () => (
-  <svg
-    width="34"
-    height="34"
-    viewBox="0 0 34 34"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       // fill-rule="evenodd"
       // clip-rule="evenodd"
@@ -96,16 +84,10 @@ const IconBad = () => (
       fill="#F44336"
     />
   </svg>
-);
+)
 
 const IconGood = () => (
-  <svg
-    width="32"
-    height="32"
-    viewBox="0 0 32 32"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       // fill-rule="evenodd"
       // clip-rule="evenodd"
@@ -113,5 +95,5 @@ const IconGood = () => (
       fill="#2196F3"
     />
   </svg>
-);
-export { IconQuizApp, IconGood, IconBad };
+)
+export { IconQuizApp, IconGood, IconBad }
